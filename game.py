@@ -1,6 +1,7 @@
 import pygame
 import pytmx
 import pyscroll
+from player import Player
 
 
 class Game:
@@ -15,8 +16,12 @@ class Game:
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, self.screen.get_size())
         map_layer.zoom = 2
 
+        # générer un joueur
+        self.player = Player()
+
         # dessiner le groupe de calque
         self.group = pyscroll.PyscrollGroup(map_layer=map_layer, default_layer=1)
+        self.group.add(self.player)
 
     def run(self):
         running = True
