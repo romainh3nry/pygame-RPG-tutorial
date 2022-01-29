@@ -17,10 +17,11 @@ class Game:
         map_layer.zoom = 2
 
         # générer un joueur
-        self.player = Player()
+        player_position = tmx_data.get_object_by_name("Player")
+        self.player = Player(player_position.x, player_position.y)
 
         # dessiner le groupe de calque
-        self.group = pyscroll.PyscrollGroup(map_layer=map_layer, default_layer=1)
+        self.group = pyscroll.PyscrollGroup(map_layer=map_layer, default_layer=3)
         self.group.add(self.player)
 
     def run(self):
@@ -28,6 +29,8 @@ class Game:
 
         while running:
 
+            self.group.update()
+            self.group.center(self.player.rect)
             self.group.draw(self.screen)
             pygame.display.flip()
 
