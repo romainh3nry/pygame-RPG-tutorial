@@ -1,3 +1,4 @@
+from pydoc import plain
 import pygame
 import pytmx
 import pyscroll
@@ -24,11 +25,26 @@ class Game:
         self.group = pyscroll.PyscrollGroup(map_layer=map_layer, default_layer=3)
         self.group.add(self.player)
 
+    def handle_input(self):
+        pressed = pygame.key.get_pressed()
+
+        if pressed[pygame.K_UP]:
+            self.player.move_up()
+        elif pressed[pygame.K_DOWN]:
+            self.player.movie_down()
+        elif pressed[pygame.K_LEFT]:
+            self.player.move_left()
+        elif pressed[pygame.K_RIGHT]:
+            self.player.move_right()
+
     def run(self):
+
+        clock = pygame.time.Clock()
+
         running = True
 
         while running:
-
+            self.handle_input()
             self.group.update()
             self.group.center(self.player.rect)
             self.group.draw(self.screen)
@@ -37,5 +53,7 @@ class Game:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+            
+            clock.tick(60)
 
         pygame.quit()
