@@ -375,7 +375,7 @@
   <object id="65" name="collision" x="26.5734" y="311.888" width="76.9231" height="59.4406"/>
   <object id="66" name="collision" x="556.643" y="160.14" width="93.7063" height="53.1469"/>
   <object id="67" name="enter_house" x="41.001" y="351.603" width="17.2127" height="23.43"/>
-  <object id="68" name="enter_house_exit" x="49.3173" y="381.387">
+  <object id="68" name="enter_house_exit" x="50.4523" y="387.819">
    <point/>
   </object>
  </objectgroup>

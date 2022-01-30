@@ -37,11 +37,8 @@ class Game:
         self.map_manager.update()
 
     def run(self):
-
         clock = pygame.time.Clock()
-
         running = True
-
         while running:
             self.player.save_location()
             self.handle_input()
@@ -54,5 +51,4 @@ class Game:
                     running = False
 
             clock.tick(60)
-
         pygame.quit()

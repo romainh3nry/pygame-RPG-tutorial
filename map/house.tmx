@@ -104,8 +104,8 @@
   <object id="14" name="collision" x="103.363" y="202.535" width="41.9038" height="30.7295"/>
   <object id="15" name="collision" x="270.978" y="128.505" width="28.6343" height="57.9669"/>
   <object id="16" name="collision" x="271.676" y="96.3787" width="45.3958" height="9.07916"/>
-  <object id="17" name="exit_house" x="127.807" y="303.803" width="30.0311" height="11.8727"/>
-  <object id="18" name="spawn_house" x="141.775" y="291.93">
+  <object id="17" name="exit_house" x="128.446" y="305.401" width="30.0311" height="11.8727"/>
+  <object id="18" name="spawn_house" x="175.33" y="271.158">
    <point/>
   </object>
  </objectgroup>
