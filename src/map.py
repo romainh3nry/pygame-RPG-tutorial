@@ -9,6 +9,7 @@ class Map:
     name: str
     walls: list[pygame.Rect]
     group: pyscroll.PyscrollGroup
+    tmx_data: pytmx.TiledMap
 
 
 class MapManager:
@@ -20,6 +21,14 @@ class MapManager:
         self.player = player
         self.register_map("world")
         self.register_map("house")
+
+        self.teleport_player("Player")
+
+    def teleport_player(self, name):
+        point = self.get_object(name)
+        self.player.position[0] = point.x
+        self.player.position[1] = point.y
+        self.player.save_location()
 
     def register_map(self, name):
         # charger la carte (tmx)
@@ -51,7 +60,7 @@ class MapManager:
         group.add(self.player)
 
         # Creer un objet map
-        self.maps[name] = Map(name, walls, group)
+        self.maps[name] = Map(name, walls, group, tmx_data)
 
     def get_map(self):
         return self.maps[self.current_map]
@@ -61,6 +70,9 @@ class MapManager:
 
     def get_walls(self):
         return self.get_map().walls
+
+    def get_object(self, name):
+        return self.get_map().tmx_data.get_object_by_name(name)
 
     def draw(self):
         self.get_group().draw(self.screen)
