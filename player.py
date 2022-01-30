@@ -1,5 +1,6 @@
 import pygame
 
+
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
@@ -9,7 +10,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.position = [x, y]
         self.images = {
-            'down' : self.get_image(0, 0),
+            'down': self.get_image(0, 0),
             'left': self.get_image(0, 32),
             'right': self.get_image(0, 64),
             'up': self.get_image(0, 96)
@@ -40,7 +41,7 @@ class Player(pygame.sprite.Sprite):
     def update(self):
         self.rect.topleft = self.position
         self.feet.midbottom = self.rect.midbottom
-    
+
     def move_back(self):
         self.position = self.old_position
         self.rect.topleft = self.position
