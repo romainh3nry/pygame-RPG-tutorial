@@ -14,7 +14,7 @@ class Game:
         pygame.display.set_caption("Pygamon Adventure")
 
         # générer un joueur
-        self.player = Player(0, 0)
+        self.player = Player()
         self.map_manager = MapManager(self.screen, self.player)
 
     def handle_input(self):

@@ -2,6 +2,7 @@ from dataclasses import dataclass
 import pygame
 import pytmx
 import pyscroll
+from player import NPC
 
 
 @dataclass
@@ -19,6 +20,7 @@ class Map:
     group: pyscroll.PyscrollGroup
     tmx_data: pytmx.TiledMap
     portals: list[Portal]
+    npcs: list[NPC]
 
 
 class MapManager:
@@ -47,6 +49,8 @@ class MapManager:
                 target_world="dungeon",
                 teleport_point="spawn_dungeon"
             )
+        ], npcs=[
+            NPC("paul", nb_points=5)
         ])
         self.register_map("house", portals=[
             Portal(
@@ -74,6 +78,7 @@ class MapManager:
         ])
 
         self.teleport_player("Player")
+        self.teleport_npcs()
 
     def check_collisions(self):
         # portals
@@ -97,7 +102,7 @@ class MapManager:
         self.player.position[1] = point.y
         self.player.save_location()
 
-    def register_map(self, name, portals=[]):
+    def register_map(self, name, portals=[], npcs=[]):
         # charger la carte (tmx)
         if portals is None:
             portals = []
@@ -128,8 +133,12 @@ class MapManager:
         )
         group.add(self.player)
 
+        # récuperer tous les npcs pour les ajouter au groupe
+        for npc in npcs:
+            group.add(npc)
+
         # Creer un objet map
-        self.maps[name] = Map(name, walls, group, tmx_data, portals)
+        self.maps[name] = Map(name, walls, group, tmx_data, portals, npcs)
 
     def get_map(self):
         return self.maps[self.current_map]
@@ -142,6 +151,15 @@ class MapManager:
 
     def get_object(self, name):
         return self.get_map().tmx_data.get_object_by_name(name)
+
+    def teleport_npcs(self):
+        for map in self.maps:
+            map_data = self.maps[map]
+            npcs = map_data.npcs
+
+            for npc in npcs:
+                npc.load_points(self)
+                npc.teleport_spawn()
 
     def draw(self):
         self.get_group().draw(self.screen)
