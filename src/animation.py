@@ -4,7 +4,9 @@ import pygame
 class AnimateSprite(pygame.sprite.Sprite):
     def __init__(self, name):
         super().__init__()
-        self.sprite_sheet = pygame.image.load(f'./sprites/{name}.png').convert_alpha()
+        self.sprite_sheet = pygame.image.load(
+            f'./sprites/{name}.png'
+        ).convert_alpha()
         self.animation_index = 0
         self.clock = 0
 
@@ -22,7 +24,7 @@ class AnimateSprite(pygame.sprite.Sprite):
         self.clock += self.speed * 8
 
         if self.clock >= 100:
-            self.animation_index += 1 # passer à l'image suivante
+            self.animation_index += 1  # passer à l'image suivante
 
             if self.animation_index >= len(self.images[name]):
                 self.animation_index = 0
@@ -40,4 +42,3 @@ class AnimateSprite(pygame.sprite.Sprite):
         image = pygame.Surface([32, 32])
         image.blit(self.sprite_sheet, (0, 0), (x, y, 32, 32))
         return image
-

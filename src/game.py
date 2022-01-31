@@ -1,12 +1,8 @@
 import pygame
-import pyscroll
-import pytmx
-
-from map import MapManager
-
-from player import Player
 
 from dialog import DialogBox
+from map import MapManager
+from player import Player
 
 
 class Game:

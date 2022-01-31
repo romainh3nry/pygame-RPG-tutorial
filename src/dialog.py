@@ -7,7 +7,9 @@ class DialogBox:
     Y_POSITION = 470
 
     def __init__(self):
-        self.box = pygame.image.load('./dialogs/dialog_box.png').convert_alpha()
+        self.box = pygame.image.load(
+            './dialogs/dialog_box.png'
+        ).convert_alpha()
         self.box = pygame.transform.scale(self.box, (700, 100))
         self.texts = []
         self.text_index = 0
@@ -31,7 +33,11 @@ class DialogBox:
                 self.letter_index = self.letter_index
 
             screen.blit(self.box, (self.X_POSITION, self.Y_POSITION))
-            text = self.font.render(self.texts[self.text_index][0: self.letter_index], False, (0, 0, 0))
+            text = self.font.render(
+                self.texts[self.text_index][0: self.letter_index],
+                False,
+                (0, 0, 0)
+            )
             screen.blit(text, (self.X_POSITION + 60, self.Y_POSITION + 30))
 
     def next_text(self):

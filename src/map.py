@@ -1,7 +1,9 @@
 from dataclasses import dataclass
+
 import pygame
-import pytmx
 import pyscroll
+import pytmx
+
 from player import NPC
 
 
@@ -53,8 +55,14 @@ class MapManager:
                 )
             ],
             npcs=[
-                NPC("paul", nb_points=5, dialogs=["Hello my name 's Paul !", "Nice to meet you"]),
-                NPC("robin", nb_points=7, dialogs=["I lost my cat... Did you see him ?"])
+                NPC(
+                    "paul",
+                    nb_points=5,
+                    dialogs=["Hello my name 's Paul !", "Nice to meet you"]
+                ),
+                NPC("robin",
+                    nb_points=7,
+                    dialogs=["I lost my cat... Did you see him ?"])
             ])
         self.register_map("house", portals=[
             Portal(
@@ -92,7 +100,8 @@ class MapManager:
 
     def check_npc_collisions(self, dialog_box):
         for sprite in self.get_group().sprites():
-            if sprite.feet.colliderect(self.player.rect) and type(sprite) is NPC:
+            if sprite.feet.colliderect(self.player.rect)\
+                    and type(sprite) is NPC:
                 dialog_box.execute(sprite.dialog)
 
     def check_collisions(self):
