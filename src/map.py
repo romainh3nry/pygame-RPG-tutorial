@@ -72,14 +72,20 @@ class MapManager:
                 teleport_point="enter_house2_exit"
             )
         ])
-        self.register_map("dungeon", portals=[
-            Portal(
-                from_world="dungeon",
-                origin_point="exit_dungeon",
-                target_world="world",
-                teleport_point="Player"
-            )
-        ])
+        self.register_map(
+            "dungeon",
+            portals=[
+                Portal(
+                    from_world="dungeon",
+                    origin_point="exit_dungeon",
+                    target_world="world",
+                    teleport_point="Player"
+                )
+            ],
+            npcs=[
+                NPC("boss", nb_points=7)
+            ]
+        )
 
         self.teleport_player("Player")
         self.teleport_npcs()
@@ -162,7 +168,7 @@ class MapManager:
             npcs = map_data.npcs
 
             for npc in npcs:
-                npc.load_points(self)
+                npc.load_points(map_data.tmx_data)
                 npc.teleport_spawn()
 
     def draw(self):

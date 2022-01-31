@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="42">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="57">
  <tileset firstgid="1" source="dungeon.tsx"/>
  <layer id="1" name="background" width="50" height="50">
   <data encoding="csv">
@@ -258,5 +258,14 @@
   <object id="39" name="collision" x="101.055" y="145.475" width="23.3204" height="28.8728"/>
   <object id="40" name="collision" x="469.739" y="133.259" width="23.3204" height="22.2099"/>
   <object id="41" name="collision" x="706.274" y="274.292" width="27.7624" height="27.7624"/>
+ </objectgroup>
+ <objectgroup id="6" name="NPCpaths">
+  <object id="42" name="boss_path1" x="143.345" y="127.486" width="16.4694" height="15.8595"/>
+  <object id="44" name="boss_path2" x="144.565" y="352.568" width="15.2495" height="15.2495"/>
+  <object id="47" name="boss_path3" x="240.332" y="352.568" width="15.8595" height="14.6395"/>
+  <object id="48" name="boss_path4" x="240.942" y="240.332" width="14.6395" height="15.8595"/>
+  <object id="51" name="boss_path5" x="113.456" y="240.942" width="14.0295" height="14.6395"/>
+  <object id="53" name="boss_path6" x="112.236" y="192.753" width="14.6395" height="15.2495"/>
+  <object id="56" name="boss_path7" x="144.565" y="192.753" width="13.4195" height="15.2495"/>
  </objectgroup>
 </map>
