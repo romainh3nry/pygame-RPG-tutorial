@@ -53,8 +53,8 @@ class MapManager:
                 )
             ],
             npcs=[
-                NPC("paul", nb_points=5),
-                NPC("robin", nb_points=7)
+                NPC("paul", nb_points=5, dialogs=["Hello my name 's Paul !", "Nice to meet you"]),
+                NPC("robin", nb_points=7, dialogs=["I lost my cat... Did you see him ?"])
             ])
         self.register_map("house", portals=[
             Portal(
@@ -83,12 +83,17 @@ class MapManager:
                 )
             ],
             npcs=[
-                NPC("boss", nb_points=7)
+                NPC("boss", nb_points=7, dialogs=[])
             ]
         )
 
         self.teleport_player("Player")
         self.teleport_npcs()
+
+    def check_npc_collisions(self, dialog_box):
+        for sprite in self.get_group().sprites():
+            if sprite.feet.colliderect(self.player.rect) and type(sprite) is NPC:
+                dialog_box.execute(sprite.dialog)
 
     def check_collisions(self):
         # portals
