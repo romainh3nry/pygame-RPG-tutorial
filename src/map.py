@@ -30,28 +30,32 @@ class MapManager:
         self.current_map = "world"
         self.screen = screen
         self.player = player
-        self.register_map("world", portals=[
-            Portal(
-                from_world="world",
-                origin_point="enter_house",
-                target_world="house",
-                teleport_point="spawn_house"
-            ),
-            Portal(
-                from_world="world",
-                origin_point="enter_house2",
-                target_world="house2",
-                teleport_point="spawn_house2"
-            ),
-            Portal(
-                from_world="world",
-                origin_point="enter_dungeon",
-                target_world="dungeon",
-                teleport_point="spawn_dungeon"
-            )
-        ], npcs=[
-            NPC("paul", nb_points=5)
-        ])
+        self.register_map(
+            "world",
+            portals=[
+                Portal(
+                    from_world="world",
+                    origin_point="enter_house",
+                    target_world="house",
+                    teleport_point="spawn_house"
+                ),
+                Portal(
+                    from_world="world",
+                    origin_point="enter_house2",
+                    target_world="house2",
+                    teleport_point="spawn_house2"
+                ),
+                Portal(
+                    from_world="world",
+                    origin_point="enter_dungeon",
+                    target_world="dungeon",
+                    teleport_point="spawn_dungeon"
+                )
+            ],
+            npcs=[
+                NPC("paul", nb_points=5),
+                NPC("robin", nb_points=7)
+            ])
         self.register_map("house", portals=[
             Portal(
                 from_world="house",
@@ -129,7 +133,7 @@ class MapManager:
         # dessiner le groupe de calque
         group = pyscroll.PyscrollGroup(
             map_layer=map_layer,
-            default_layer=5
+            default_layer=10
         )
         group.add(self.player)
 
@@ -168,3 +172,6 @@ class MapManager:
     def update(self):
         self.get_group().update()
         self.check_collisions()
+
+        for npc in self.get_map().npcs:
+            npc.move()

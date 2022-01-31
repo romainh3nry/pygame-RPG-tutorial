@@ -28,15 +28,19 @@ class Entity(pygame.sprite.Sprite):
 
     def move_right(self):
         self.position[0] += self.speed
+        self.change_animation("right")
 
     def move_left(self):
         self.position[0] -= self.speed
+        self.change_animation("left")
 
     def move_up(self):
         self.position[1] -= self.speed
+        self.change_animation("up")
 
-    def movie_down(self):
+    def move_down(self):
         self.position[1] += self.speed
+        self.change_animation("down")
 
     def update(self):
         self.rect.topleft = self.position
@@ -64,10 +68,33 @@ class NPC(Entity):
         self.nb_points = nb_points
         self.points = []
         self.name = name
-        self.current_points = 0
+        self.speed = 1
+        self.current_point = 0
+
+    def move(self):
+        current_point = self.current_point
+        target_point = current_point + 1
+
+        if target_point >= self.nb_points:
+            target_point = 0
+
+        current_rect = self.points[current_point]
+        target_rect = self.points[target_point]
+
+        if current_rect.y < target_rect.y and abs(current_rect.x - target_rect.x) < 3:
+            self.move_down()
+        elif current_rect.y > target_rect.y and abs(current_rect.x - target_rect.x) < 3:
+            self.move_up()
+        elif current_rect.x > target_rect.x and abs(current_rect.y - target_rect.y) < 3:
+            self.move_left()
+        elif current_rect.x < target_rect.x and abs(current_rect.y - target_rect.y) < 3:
+            self.move_right()
+
+        if self.rect.colliderect(target_rect):
+            self.current_point = target_point
 
     def teleport_spawn(self):
-        location = self.points[self.current_points]
+        location = self.points[self.current_point]
         self.position[0] = location.x
         self.position[1] = location.y
         self.save_location()

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="84">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="101">
  <tileset firstgid="1" source="nature.tsx"/>
  <tileset firstgid="721" source="house.tsx"/>
  <tileset firstgid="1496" source="dungeon.tsx"/>
@@ -414,7 +414,6 @@
   <object id="39" name="collision" x="472.812" y="719.11" width="14.3276" height="12.2808"/>
   <object id="40" name="collision" x="393.669" y="685.679" width="13.6454" height="13.6454"/>
   <object id="41" name="collision" x="277.683" y="732.756" width="18.4212" height="15.0099"/>
-  <object id="42" x="182.166" y="488.504"/>
   <object id="43" name="collision" x="243.634" y="89.739" width="25.5835" height="15.3501"/>
   <object id="44" name="collision" x="216.476" y="208.21" width="14.5629" height="11.0206"/>
   <object id="45" name="collision" x="296.375" y="203.881" width="15.3501" height="16.5309"/>
@@ -446,10 +445,17 @@
   <object id="78" name="collision" x="246.169" y="739.061" width="20.468" height="24.3403"/>
  </objectgroup>
  <objectgroup id="13" name="NPCpaths">
-  <object id="79" name="paul_path1" x="64.1668" y="128.334" width="15.562" height="15.3489"/>
   <object id="80" name="paul_path2" x="64.38" y="192.5" width="15.562" height="15.3489"/>
   <object id="81" name="paul_path3" x="112.132" y="192.5" width="15.1357" height="15.1357"/>
   <object id="82" name="paul_path4" x="112.132" y="224.264" width="15.7752" height="15.9884"/>
   <object id="83" name="paul_path5" x="112.345" y="128.547" width="15.3489" height="15.3489"/>
+  <object id="85" name="paul_path1" x="64.0719" y="128.144" width="16.0329" height="15.7936"/>
+  <object id="87" name="robin_path1" x="527.863" y="208.018" width="15.5635" height="15.4046"/>
+  <object id="93" name="robin_path3" x="159.959" y="528.057" width="15.7389" height="16.0601"/>
+  <object id="94" name="robin_path4" x="528.378" y="527.736" width="15.4177" height="15.0965"/>
+  <object id="95" name="robin_path5" x="575.595" y="528.699" width="15.7389" height="14.7753"/>
+  <object id="96" name="robin_path6" x="655.896" y="528.057" width="16.7025" height="16.3813"/>
+  <object id="97" name="robin_path7" x="656.217" y="208.782" width="16.0601" height="15.0965"/>
+  <object id="99" name="robin_path2" x="158.674" y="208.139" width="16.3813" height="15.0965"/>
  </objectgroup>
 </map>
